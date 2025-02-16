@@ -23,11 +23,11 @@ import java.text.SimpleDateFormat
 
 class CurrencyConverterActivity : AppCompatActivity() {
 
-    private var timeZoneSpinner: Spinner = findViewById(R.id.timeZoneSpinner)
+    private lateinit var timeZoneSpinner : Spinner
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
     private var selectedTimeZone = "GMT"
-    private var digitalClockTextView = findViewById<TextView>(R.id.digitalClock)
+    private lateinit var digitalClockTextView : TextView
     private val timeZoneKey = "selected_time_zone"
     //@RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +41,8 @@ class CurrencyConverterActivity : AppCompatActivity() {
         }
         val backBtn1 = findViewById<ImageButton>(R.id.back_btn_1)
         //var digitalClockTextView = findViewById<TextView>(R.id.digitalClock)
-
+        digitalClockTextView = findViewById(R.id.digitalClock)
+        timeZoneSpinner = findViewById(R.id.timeZoneSpinner)
         backBtn1.setOnClickListener { goBack() }
         val timeZones = TimeZone.getAvailableIDs().toList()
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, timeZones)
