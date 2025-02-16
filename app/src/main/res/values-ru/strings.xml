@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Набор инструментов</string>
+    <string name="curconvert_desc">Конвертер валюты</string>
+    <string name="curconvert_open_btn">Открыть конвертер</string>
+    <string name="btn_convert_text">Конвертировать</string>
+    <string name="default_time">00:00:00</string>
+    <string name="tz_spinner_desc">Часовой пояс</string>
+</resources>

@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SimpleTweaker" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.SimpleTweaker" parent="Base.Theme.SimpleTweaker" >
+        <item name="colorPrimary">@color/blue_grey_400</item>
+        <item name="colorOnPrimary">@color/blue_grey_900</item>
+        <item name="colorPrimaryContainer">@color/blue_grey_700</item>
+        <item name="colorOnPrimaryContainer">@color/blue_grey_200</item>
+        <item name="colorSecondary">@color/grey_400</item>
+        <item name="colorOnSecondary">@color/grey_900</item>
+        <item name="colorSecondaryContainer">@color/grey_700</item>
+        <item name="colorOnSecondaryContainer">@color/grey_200</item>
+        <item name="colorTertiary">@color/indigo_400</item>
+        <item name="colorOnTertiary">@color/indigo_900</item>
+        <item name="colorTertiaryContainer">@color/indigo_700</item>
+        <item name="colorOnTertiaryContainer">@color/indigo_200</item>
+        <item name="colorError">@color/indigo_400</item>
+        <item name="colorOnError">@color/indigo_900</item>
+        <item name="colorErrorContainer">@color/indigo_700</item>
+        <item name="colorOnErrorContainer">@color/indigo_200</item>
+        <!--item name="colorPrimaryVariant">@color/blue_grey_700</item-->
+        <!--item name="colorSecondary">@color/grey_400</item-->
+        <!--item name="colorSecondaryVariant">@color/grey_700</item-->
+    </style>
+        <!--style/-->
+</resources>

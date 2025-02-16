@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Simple Toolkit</string>
+    <string name="curconvert_desc">Currency converter</string>
+    <string name="curconvert_open_btn">Open converter</string>
+    <string name="btn_convert_text">Convert</string>
+    <string name="default_time">00:00:00</string>
+    <string name="tz_spinner_desc">Time zone</string>
+</resources>
