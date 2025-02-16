@@ -1,7 +1,7 @@
 package ru.ivanalesh.simpletoolkit
 
 import android.content.Context
-import android.icu.util.TimeZone
+//import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ru.ivanalesh.simpletweaker.R
+import java.util.*
+import java.text.SimpleDateFormat
 
 class CurrencyConverterActivity : AppCompatActivity() {
 
@@ -69,8 +71,15 @@ class CurrencyConverterActivity : AppCompatActivity() {
         }
         handler.post(runnable)
     }
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun updateTime() {
-
+        val timeZone = java.util.TimeZone.getTimeZone(selectedTimeZone)
+        //val timeZone2 = java.util.TimeZone.getTimeZone(selectedTimeZone)
+        val calendar = Calendar.getInstance()
+        calendar.timeZone = timeZone
+        val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        timeFormat.timeZone = timeZone
+        digitalClockTextView.text = timeFormat.format(calendar.time)
     }
     private fun goBack(){
         finish()
