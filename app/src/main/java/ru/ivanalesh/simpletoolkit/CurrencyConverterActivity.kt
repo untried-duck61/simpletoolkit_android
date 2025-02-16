@@ -28,7 +28,7 @@ class CurrencyConverterActivity : AppCompatActivity() {
     private var selectedTimeZone = "GMT"
     private var digitalClockTextView = findViewById<TextView>(R.id.digitalClock)
     private val timeZoneKey = "selected_time_zone"
-    @RequiresApi(Build.VERSION_CODES.N)
+    //@RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -71,7 +71,7 @@ class CurrencyConverterActivity : AppCompatActivity() {
         }
         handler.post(runnable)
     }
-    @RequiresApi(Build.VERSION_CODES.N)
+    //@RequiresApi(Build.VERSION_CODES.N)
     private fun updateTime() {
         val timeZone = java.util.TimeZone.getTimeZone(selectedTimeZone)
         //val timeZone2 = java.util.TimeZone.getTimeZone(selectedTimeZone)
