@@ -2,9 +2,10 @@ package ru.ivanalesh.simpletoolkit
 
 import android.content.Context
 //import android.icu.util.Calendar
-import android.os.Build
+//import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,7 +13,7 @@ import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.RequiresApi
+//import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -38,7 +39,7 @@ class CurrencyConverterActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        var backBtn1 = findViewById<ImageButton>(R.id.back_btn_1)
+        val backBtn1 = findViewById<ImageButton>(R.id.back_btn_1)
         //var digitalClockTextView = findViewById<TextView>(R.id.digitalClock)
 
         backBtn1.setOnClickListener { goBack() }
@@ -62,18 +63,18 @@ class CurrencyConverterActivity : AppCompatActivity() {
 
             }
         }
-        handler = Handler()
+        //handler = Handler(Looper.getMainLooper())
         runnable = object : Runnable {
             override fun run() {
                 updateTime()
-                handler.postDelayed(this, 1000)
+                digitalClockTextView.postDelayed(this, 1000)
             }
         }
-        handler.post(runnable)
+        digitalClockTextView.postDelayed(runnable, 1000)
     }
     //@RequiresApi(Build.VERSION_CODES.N)
     private fun updateTime() {
-        val timeZone = java.util.TimeZone.getTimeZone(selectedTimeZone)
+        val timeZone = TimeZone.getTimeZone(selectedTimeZone)
         //val timeZone2 = java.util.TimeZone.getTimeZone(selectedTimeZone)
         val calendar = Calendar.getInstance()
         calendar.timeZone = timeZone
@@ -83,5 +84,10 @@ class CurrencyConverterActivity : AppCompatActivity() {
     }
     private fun goBack(){
         finish()
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        // Остановка обновления времени при закрытии приложения
+        handler.removeCallbacks(runnable)
     }
 }

@@ -8,7 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ru.ivanalesh.simpletweaker"
+        applicationId = "ru.ivanalesh.simpletoolkit"
         minSdk = 16
         targetSdk = 34
         versionCode = 1
