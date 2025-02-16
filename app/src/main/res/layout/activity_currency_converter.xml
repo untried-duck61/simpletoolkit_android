@@ -23,6 +23,7 @@
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <Spinner
+        android:id="@+id/timeZoneSpinner"
         android:layout_width="167dp"
         android:layout_height="48dp"
         android:dropDownWidth="wrap_content"
