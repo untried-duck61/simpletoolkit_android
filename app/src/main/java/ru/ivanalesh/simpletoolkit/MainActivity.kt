@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import ru.ivanalesh.simpletweaker.R
+import ru.ivanalesh.simpletoolkit.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +20,16 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         var btnopencurconvert = findViewById<Button>(R.id.btnGoConverter)
+        var btngoweather = findViewById<Button>(R.id.btnGoCurWeather)
         btnopencurconvert.setOnClickListener { onCurConvertOpenBtnClick() }
+        btngoweather.setOnClickListener {goWeather()}
     }
     private fun onCurConvertOpenBtnClick(){
         var intent = Intent(this, CurrencyConverterActivity::class.java)
+        this.startActivity(intent)
+    }
+    private fun goWeather(){
+        var intent = Intent(this, CurrentWeatherActivity::class.java)
         this.startActivity(intent)
     }
 }

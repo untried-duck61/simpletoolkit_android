@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.ivanalesh.simpletweaker"
+    namespace = "ru.ivanalesh.simpletoolkit"
     compileSdk = 34
 
     defaultConfig {
@@ -42,6 +42,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.com.squareup.retrofit2.retrofit)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+    implementation(libs.moshi)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

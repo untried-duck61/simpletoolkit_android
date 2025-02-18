@@ -6,4 +6,9 @@
     <string name="btn_convert_text">Конвертировать</string>
     <string name="default_time">00:00:00</string>
     <string name="tz_spinner_desc">Часовой пояс</string>
+    <string name="cur_weather_desc_text">Прогноз погоды</string>
+    <string name="btn_go_cur_weather_text">Показать прогноз погоды</string>
+    <string name="city_name_placeholder">Город</string>
+    <string name="temp_placeholder">0</string>
+    <string name="todo">TODO</string>
 </resources>

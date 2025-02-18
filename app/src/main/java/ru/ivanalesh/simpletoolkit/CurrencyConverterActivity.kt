@@ -17,7 +17,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import ru.ivanalesh.simpletweaker.R
+import ru.ivanalesh.simpletoolkit.R
 import java.util.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
