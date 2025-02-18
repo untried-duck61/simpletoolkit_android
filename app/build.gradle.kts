@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.moshi)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.material.v130)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

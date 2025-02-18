@@ -10,4 +10,7 @@
     <string name="todo">TODO</string>
     <string name="city_name_placeholder">City Name</string>
     <string name="temp_placeholder">0</string>
+    <string name="api_key_desc">API Key</string>
+    <string name="weather_settings_group">Weather forecast</string>
+    <string name="save_btn_weather_settings">Save</string>
 </resources>

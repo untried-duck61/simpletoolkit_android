@@ -1,6 +1,8 @@
 package ru.ivanalesh.simpletoolkit
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +10,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class SettingsActivity : AppCompatActivity() {
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var apiKeyEditText: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
