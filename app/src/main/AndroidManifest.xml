@@ -19,13 +19,16 @@
         android:theme="@style/Theme.SimpleTweaker"
         tools:targetApi="34">
         <activity
-            android:name="ru.ivanalesh.simpletoolkit.CurrentWeatherActivity"
+            android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name="ru.ivanalesh.simpletoolkit.CurrencyConverterActivity"
+            android:name=".CurrentWeatherActivity"
             android:exported="false" />
         <activity
-            android:name="ru.ivanalesh.simpletoolkit.MainActivity"
+            android:name=".CurrencyConverterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

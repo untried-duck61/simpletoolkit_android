@@ -8,12 +8,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.util.Base64
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 class CurrentWeatherActivity : AppCompatActivity() {
-    val secretKey1 = "NzM0NDI5M2UzN2VmOTAxOGQxMjkyNDBjMzE2MTU4YTk="
     @SuppressLint("NewApi")
-    val secretKey2 = String(Base64.getDecoder().decode(secretKey1))
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -29,5 +30,50 @@ class CurrentWeatherActivity : AppCompatActivity() {
     }
     private fun goBack(){
         finish()
+    }
+}
+data class WeatherResponse(
+    val weather: List<Weather>,
+    val main: Main,
+    val wind: Wind,
+    val name: String
+)
+
+data class Weather(
+    val main: String,
+    val description: String,
+    val icon: String
+)
+
+data class Main(
+    val temp: Double,
+    val feels_like: Double,
+    val temp_min: Double,
+    val temp_max: Double,
+    val pressure: Int,
+    val humidity: Int
+)
+
+data class Wind(
+    val speed: Double,
+    val deg: Int
+)
+interface WeatherApiService {
+    @GET("data/2.5/weather")
+    suspend fun getWeather(
+        @Query("q") city: String,
+        @Query("units") units: String = "metric", // Метрическая система (градусы Цельсия)
+        @Query("appid") apiKey: String
+    ): WeatherResponse
+}
+object RetrofitClient {
+    private const val BASE_URL = "https://api.openweathermap.org/"
+
+    val instance: WeatherApiService by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(WeatherApiService::class.java)
     }
 }
