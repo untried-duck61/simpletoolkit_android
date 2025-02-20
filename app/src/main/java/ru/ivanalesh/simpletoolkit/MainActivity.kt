@@ -3,11 +3,11 @@ package ru.ivanalesh.simpletoolkit
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import ru.ivanalesh.simpletoolkit.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +21,12 @@ class MainActivity : AppCompatActivity() {
         }
         var btnopencurconvert = findViewById<Button>(R.id.btnGoConverter)
         var btngoweather = findViewById<Button>(R.id.btnGoCurWeather)
+        var btnsettings = findViewById<ImageButton>(R.id.btnGoSettings)
         btnopencurconvert.setOnClickListener { onCurConvertOpenBtnClick() }
         btngoweather.setOnClickListener {goWeather()}
+        btnsettings.setOnClickListener{
+            goSettings()
+        }
     }
     private fun onCurConvertOpenBtnClick(){
         var intent = Intent(this, CurrencyConverterActivity::class.java)
@@ -30,6 +34,10 @@ class MainActivity : AppCompatActivity() {
     }
     private fun goWeather(){
         var intent = Intent(this, CurrentWeatherActivity::class.java)
+        this.startActivity(intent)
+    }
+    private fun goSettings(){
+        var intent = Intent(this, SettingsActivity::class.java)
         this.startActivity(intent)
     }
 }

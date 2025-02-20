@@ -14,4 +14,5 @@
     <string name="api_key_desc">API Ключ</string>
     <string name="weather_settings_group">Погода</string>
     <string name="save_btn_weather_settings">Сохранить</string>
+    <string name="api_key_succ_save">Сохранено успешно</string>
 </resources>
