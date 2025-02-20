@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.material.v130)
     implementation(libs.play.services.location)
+    implementation(libs.gms.play.services.location)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

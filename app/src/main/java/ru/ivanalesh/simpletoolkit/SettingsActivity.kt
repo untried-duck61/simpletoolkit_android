@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -34,7 +35,7 @@ class SettingsActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             val apiKey = apiKeyEditText.text.toString()
             sharedPreferences.edit().putString("API_KEY", apiKey).apply()
-            //Toast.makeText(this, R.string.api_key_succ_save.toString(), Toast.LENGTH_SHORT)
+            Toast.makeText(this, R.string.api_key_succ_save, Toast.LENGTH_SHORT).show()
         }
     }
     private fun goBack(){

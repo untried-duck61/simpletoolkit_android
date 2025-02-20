@@ -14,4 +14,5 @@
     <string name="weather_settings_group">Weather forecast</string>
     <string name="save_btn_weather_settings">Save</string>
     <string name="api_key_succ_save">Saved successfully</string>
+    <string name="gps_perm_not_granted">Location permission is not granted</string>
 </resources>
