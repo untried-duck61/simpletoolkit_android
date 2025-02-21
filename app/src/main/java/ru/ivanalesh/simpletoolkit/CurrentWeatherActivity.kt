@@ -1,6 +1,7 @@
 package ru.ivanalesh.simpletoolkit
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
@@ -16,6 +17,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import retrofit2.Callback
 import java.util.Locale
 
 class CurrentWeatherActivity : AppCompatActivity() {
@@ -49,9 +51,22 @@ class CurrentWeatherActivity : AppCompatActivity() {
                 val latitude = location.latitude
                 val longitude = location.longitude
                 getCityName(latitude, longitude)
+                getWeather(latitude, longitude)
             }
         }
     }
+
+    private fun getWeather(lat: Double, lon: Double) {
+        val sharedPreferences = getSharedPreferences("WeatherAppPrefs", Context.MODE_PRIVATE)
+        val apiKey = sharedPreferences.getString("API_KEY", "") ?: ""
+        if (apiKey.isEmpty()){
+            Toast.makeText(this, R.string.api_key_not_found_text.toString(), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        getWeatherJ(lat, lon, apiKey).enqeue(object : Callback<WeatherResponce>)
+    }
+
     private fun getCityName(lat: Double, lon: Double){
         val geocoder = Geocoder(this, Locale.getDefault())
         try {

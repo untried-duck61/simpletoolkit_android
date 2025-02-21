@@ -17,4 +17,5 @@
     <string name="gps_perm_not_granted">Location permission is not granted</string>
     <string name="city_not_found_text">City not found</string>
     <string name="city_error_text">Can\'t get city name</string>
+    <string name="api_key_not_found_text">API Key not found</string>
 </resources>

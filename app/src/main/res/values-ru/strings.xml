@@ -18,4 +18,5 @@
     <string name="gps_perm_not_granted">Разрешение на местоположение не предоставлено</string>
     <string name="city_not_found_text">Город не найден</string>
     <string name="city_error_text">Невозможно определить город</string>
+    <string name="api_key_not_found_text">API ключ не найден</string>
 </resources>
