@@ -16,4 +16,6 @@
     <string name="save_btn_weather_settings">Сохранить</string>
     <string name="api_key_succ_save">Сохранено успешно</string>
     <string name="gps_perm_not_granted">Разрешение на местоположение не предоставлено</string>
+    <string name="city_not_found_text">Город не найден</string>
+    <string name="city_error_text">Невозможно определить город</string>
 </resources>
