@@ -7,7 +7,8 @@ import android.widget.TableRow
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 class CalendarActivity : AppCompatActivity() {
     private val calendar = Calendar.getInstance()

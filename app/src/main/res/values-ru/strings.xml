@@ -29,4 +29,5 @@
     <string name="pressure">Атмосферное давление</string>
     <string name="sunrise">Восход</string>
     <string name="sunset">Закат</string>
+    <string name="open_calendar_desc">Открыть календарь</string>
 </resources>
