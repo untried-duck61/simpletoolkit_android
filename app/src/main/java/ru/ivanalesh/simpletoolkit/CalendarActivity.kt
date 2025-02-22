@@ -3,7 +3,7 @@ package ru.ivanalesh.simpletoolkit
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
@@ -23,7 +23,7 @@ class CalendarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_calendar)
 
         tableLayout = findViewById(R.id.calendarTable)
-        val backbtn4 = findViewById<Button>(R.id.back_btn_4)
+        val backbtn4 = findViewById<ImageButton>(R.id.back_btn_4)
         backbtn4.setOnClickListener { finish() }
         updateCalendar()
     }
