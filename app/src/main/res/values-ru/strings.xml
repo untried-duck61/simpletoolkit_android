@@ -30,4 +30,11 @@
     <string name="sunrise">Восход</string>
     <string name="sunset">Закат</string>
     <string name="open_calendar_desc">Открыть календарь</string>
+    <string name="mon">Пн</string>
+    <string name="tue">Вт</string>
+    <string name="wed">Ср</string>
+    <string name="thu">Чт</string>
+    <string name="fri">Пт</string>
+    <string name="sat">Сб</string>
+    <string name="sun">Вс</string>
 </resources>

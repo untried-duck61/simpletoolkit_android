@@ -2,6 +2,8 @@ package ru.ivanalesh.simpletoolkit
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
+import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
@@ -21,6 +23,8 @@ class CalendarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_calendar)
 
         tableLayout = findViewById(R.id.calendarTable)
+        val backbtn4 = findViewById<Button>(R.id.back_btn_4)
+        backbtn4.setOnClickListener { finish() }
         updateCalendar()
     }
 
@@ -33,35 +37,54 @@ class CalendarActivity : AppCompatActivity() {
         val titleRow = TableRow(this)
         val titleView = TextView(this).apply {
             text = dateFormat.format(calendar.time).capitalize(Locale.getDefault())
-            textSize = 18f
+            textSize = 20f
             setTextColor(Color.BLACK)
+            gravity = Gravity.CENTER
         }
         titleRow.addView(titleView)
         tableLayout.addView(titleRow)
 
-        // Дни недели
+        // Номера недель + Дни недели
         val daysOfWeekRow = TableRow(this)
-        val daysOfWeek = arrayOf("Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс")
+        val weekNumberHeader = TextView(this).apply {
+            text = "#"
+            textSize = 16f
+            setTextColor(Color.BLACK)
+            gravity = Gravity.CENTER
+        }
+        daysOfWeekRow.addView(weekNumberHeader)
+
+        val daysOfWeek = arrayOf(R.string.mon.toString(), R.string.tue.toString(), R.string.wed.toString(), R.string.thu.toString(), R.string.fri.toString(), R.string.sat.toString(), R.string.sun.toString())
         for (day in daysOfWeek) {
             val textView = TextView(this).apply {
                 text = day
                 textSize = 16f
                 setTextColor(Color.BLACK)
+                gravity = Gravity.CENTER
             }
             daysOfWeekRow.addView(textView)
         }
         tableLayout.addView(daysOfWeekRow)
 
-        // Дни месяца
+        // Дни месяца с номерами недель
         calendar.add(Calendar.DAY_OF_MONTH, -calendar.get(Calendar.DAY_OF_WEEK) + firstDayOfWeek)
         for (i in 0 until 6) { // 6 строк
             val row = TableRow(this)
-            for (j in 0 until 7) { // 7 столбцов
+            val weekNumber = TextView(this).apply {
+                text = calendar.get(Calendar.WEEK_OF_YEAR).toString()
+                textSize = 14f
+                setTextColor(Color.BLACK)
+                gravity = Gravity.CENTER
+            }
+            row.addView(weekNumber)
+
+            for (j in 0 until 7) { // 7 столбцов (дни недели)
                 val dayView = TextView(this).apply {
                     text = calendar.get(Calendar.DAY_OF_MONTH).toString()
-                    textSize = 14f
-                    setPadding(10, 10, 10, 10)
-                    setTextColor(if (isWeekend(calendar)) Color.RED else Color.BLACK)
+                    textSize = 18f
+                    setPadding(20, 20, 20, 20)
+                    gravity = Gravity.CENTER
+                    setTextColor(if (isWeekend(calendar)) Color.BLUE else Color.BLACK)
                     if (isToday(calendar)) {
                         setBackgroundColor(Color.LTGRAY)
                     }
@@ -85,3 +108,4 @@ class CalendarActivity : AppCompatActivity() {
     }
 
 }
+
