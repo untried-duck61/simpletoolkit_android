@@ -7,6 +7,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import retrofit2.Call
@@ -22,7 +24,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 class CurrentWeatherActivity : AppCompatActivity() {
     private val retrofit = Retrofit.Builder()
@@ -64,7 +69,11 @@ class CurrentWeatherActivity : AppCompatActivity() {
             }
         }
     }
-
+    fun formatUnixTime(unixTime: Long): String {
+        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+        sdf.timeZone = TimeZone.getDefault() // Используем локальное время
+        return sdf.format(Date(unixTime * 1000)) // Переводим в миллисекунды
+    }
     private fun getWeather(lat: Double, lon: Double) {
         val sharedPreferences = getSharedPreferences("WeatherAppPrefs", Context.MODE_PRIVATE)
         val apiKey = sharedPreferences.getString("API_KEY", "") ?: ""
@@ -73,23 +82,45 @@ class CurrentWeatherActivity : AppCompatActivity() {
             return
         }
 
-        weatherApi.getWeather(lat, lon, apiKey).enqueue(object : Callback<WeatherResponce> {
+        weatherApi.getWeather(lat, lon, apiKey).enqueue(object : Callback<WeatherResponse> {
             override fun onResponse(
-                call: Call<WeatherResponce>,
-                response: Response<WeatherResponce>
+                call: Call<WeatherResponse>,
+                response: Response<WeatherResponse>
             ) {
                 if (response.isSuccessful){
-                    val weatherResponce = response.body()
-                    if(weatherResponce != null){
-                        val pressureMmHg = (weatherResponce.main.pressure * 0.75006).toInt()
-                        val feelsLike = weatherResponce.main.
+                    val weatherResponse = response.body()
+                    if(weatherResponse != null){
+                        val pressureMmHg = (weatherResponse.main.pressure * 0.75006).toInt()
+                        val feelsLike = weatherResponse.main.feelsLike.toInt() // Округляем
+                        val tempMin = weatherResponse.main.tempMin.toInt()
+                        val tempMax = weatherResponse.main.tempMax.toInt()
+                        val sunriseTime = formatUnixTime(weatherResponse.sys.sunrise)
+                        val sunsetTime = formatUnixTime(weatherResponse.sys.sunset)
                         val tvTemp = findViewById<TextView>(R.id.textViewTemperature)
-                        tvTemp.text = "${weatherResponce.main.temp}"
-
+                        tvTemp.text = "${weatherResponse.main.temp}"
+                        val iconUrl = "https://openweathermap.org/img/wn/${weatherResponse.weather[0].icon}@2x.png"
+                        val weatherImageView = findViewById<ImageView>(R.id.imageViewWeatherIcon)
+                        val tvWeather = findViewById<TextView>(R.id.textViewWeather)
+                        Glide.with(this@CurrentWeatherActivity).load(iconUrl).into(weatherImageView)
+                        tvWeather.text = """
+                            ${R.string.feels_like}: $feelsLike°C
+                            ${R.string.min_temp}: $tempMin°C
+                            ${R.string.max_temp}: $tempMax°C
+                            ${R.string.humidity}: ${weatherResponse.main.humidity}%
+                            ${R.string.pressure}: $pressureMmHg мм рт. ст.
+                            ${R.string.sunrise}: $sunriseTime
+                            ${R.string.sunset}: $sunsetTime
+                            ${weatherResponse.weather[0].description.capitalize()}
+                        """.trimIndent()
                     }
                 }
             }
-        })
+            override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
+                //val err_text =
+                Toast.makeText(this@CurrentWeatherActivity, "${R.string.error_text}: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        }
+        )
     }
 
     private fun getCityName(lat: Double, lon: Double){

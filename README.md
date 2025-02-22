@@ -6,7 +6,7 @@
 ## About
 This is a simple app with necessary utilites, for example, current time, current weather, etc.
 ## System requirements
-* Minimum Android version: 4.1
+* Minimum Android version: 5.0
 * Arch: tested on arm64v8a
 ## How to use weather forecast
 1. Register on [OpenWeatherMap](https://openweathermap.org/) (if you have no account)

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    //alias('googlePlayServicesIidVersion = "17.0.0"')
 }
 
 android {
@@ -9,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "ru.ivanalesh.simpletoolkit"
-        minSdk = 16
+        minSdk = 21
         multiDexEnabled = true
         targetSdk = 34
         versionCode = 1
@@ -52,7 +53,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.material.v130)
     implementation(libs.play.services.location)
+    implementation(libs.glide)
     implementation(libs.gms.play.services.location)
+    //implementation("com.google.android.gms:play-services-location:21.3.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -19,4 +19,14 @@
     <string name="city_not_found_text">Город не найден</string>
     <string name="city_error_text">Невозможно определить город</string>
     <string name="api_key_not_found_text">API ключ не найден</string>
+    <string name="error_text">Ошибка</string>
+    <string name="weather_placeholder">Погода</string>
+    <string name="lang">ru</string>
+    <string name="feels_like">Ощущается как</string>
+    <string name="min_temp">Минимальная температура</string>
+    <string name="max_temp">Максимальная температура</string>
+    <string name="humidity">Влажность</string>
+    <string name="pressure">Атмосферное давление</string>
+    <string name="sunrise">Восход</string>
+    <string name="sunset">Закат</string>
 </resources>

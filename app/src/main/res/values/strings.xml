@@ -18,4 +18,14 @@
     <string name="city_not_found_text">City not found</string>
     <string name="city_error_text">Can\'t get city name</string>
     <string name="api_key_not_found_text">API Key not found</string>
+    <string name="error_text">Error</string>
+    <string name="weather_placeholder">Weather</string>
+    <string name="lang">en</string>
+    <string name="feels_like">Feels like</string>
+    <string name="min_temp">Minimum temperature</string>
+    <string name="max_temp">Maximum temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
 </resources>
