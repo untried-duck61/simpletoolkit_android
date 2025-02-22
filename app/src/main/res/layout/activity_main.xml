@@ -72,8 +72,8 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="154dp"
-                android:layout_height="33dp"
+                android:layout_width="248dp"
+                android:layout_height="30dp"
                 android:text="@string/app_name"
                 android:textColor="@color/blue_grey_200"
                 android:textSize="24sp"
@@ -146,10 +146,10 @@
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.991"
+                app:layout_constraintHorizontal_bias="0.906"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.045"
+                app:layout_constraintVertical_bias="0.074"
                 app:srcCompat="@drawable/settings_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
