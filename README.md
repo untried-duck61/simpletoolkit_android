@@ -2,6 +2,7 @@
 ## Contents
 1. [About](#about)
 2. [System requirements](#system-requirements)
+3. [How to use weather forecast](#how-to-use-weather-forecast)
 ## About
 This is a simple app with necessary utilites, for example, current time, current weather, etc.
 ## System requirements
@@ -12,3 +13,5 @@ This is a simple app with necessary utilites, for example, current time, current
 2. Go to Settings (in-app settings)
 3. Paste your Open Weather Map API Key
 4. Click Save
+5. Go to weather forecast
+Done!
