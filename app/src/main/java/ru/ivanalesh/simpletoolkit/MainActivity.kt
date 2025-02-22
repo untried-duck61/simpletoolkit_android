@@ -22,11 +22,17 @@ class MainActivity : AppCompatActivity() {
         var btnopencurconvert = findViewById<Button>(R.id.btnGoConverter)
         var btngoweather = findViewById<Button>(R.id.btnGoCurWeather)
         var btnsettings = findViewById<ImageButton>(R.id.btnGoSettings)
+        var btncalendar = findViewById<Button>(R.id.btnGoCalendar)
+        btncalendar.setOnClickListener { goCalendar() }
         btnopencurconvert.setOnClickListener { onCurConvertOpenBtnClick() }
         btngoweather.setOnClickListener {goWeather()}
         btnsettings.setOnClickListener{
             goSettings()
         }
+    }
+    private fun goCalendar(){
+        var intent = Intent(this, CalendarActivity::class.java)
+        this.startActivity(intent)
     }
     private fun onCurConvertOpenBtnClick(){
         var intent = Intent(this, CurrencyConverterActivity::class.java)
