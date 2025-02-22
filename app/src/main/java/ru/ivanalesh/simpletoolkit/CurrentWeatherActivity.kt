@@ -17,10 +17,19 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.Locale
 
 class CurrentWeatherActivity : AppCompatActivity() {
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("https://api.openweathermap.org/data/2.5/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    private val weatherApi = retrofit.create(WeatherApiService::class.java)
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +73,23 @@ class CurrentWeatherActivity : AppCompatActivity() {
             return
         }
 
-        getWeatherJ(lat, lon, apiKey).enqeue(object : Callback<WeatherResponce>)
+        weatherApi.getWeather(lat, lon, apiKey).enqueue(object : Callback<WeatherResponce> {
+            override fun onResponse(
+                call: Call<WeatherResponce>,
+                response: Response<WeatherResponce>
+            ) {
+                if (response.isSuccessful){
+                    val weatherResponce = response.body()
+                    if(weatherResponce != null){
+                        val pressureMmHg = (weatherResponce.main.pressure * 0.75006).toInt()
+                        val feelsLike = weatherResponce.main.
+                        val tvTemp = findViewById<TextView>(R.id.textViewTemperature)
+                        tvTemp.text = "${weatherResponce.main.temp}"
+
+                    }
+                }
+            }
+        })
     }
 
     private fun getCityName(lat: Double, lon: Double){
