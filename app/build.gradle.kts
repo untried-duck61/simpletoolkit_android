@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "ru.ivanalesh.simpletoolkit"
-        minSdk = 21
+        minSdk = 30
         multiDexEnabled = true
         targetSdk = 34
         versionCode = 1
@@ -55,7 +55,7 @@ dependencies {
     implementation(libs.play.services.location)
     implementation(libs.glide)
     implementation(libs.gms.play.services.location)
-    implementation("com.google.android.gms:play-services-location:21.0.1")
+    //implementation("com.google.android.android.gms:play-services-location:21.0.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
