@@ -37,7 +37,7 @@ class CalendarActivity : AppCompatActivity() {
         val titleRow = TableRow(this)
         val titleView = TextView(this).apply {
             text = dateFormat.format(calendar.time).capitalize(Locale.getDefault())
-            textSize = 20f
+            textSize = 14f
             setTextColor(Color.BLACK)
             gravity = Gravity.CENTER
         }
@@ -48,20 +48,29 @@ class CalendarActivity : AppCompatActivity() {
         val daysOfWeekRow = TableRow(this)
         val weekNumberHeader = TextView(this).apply {
             text = "#"
-            textSize = 16f
+            textSize = 14f
             setTextColor(Color.BLACK)
             gravity = Gravity.CENTER
         }
         daysOfWeekRow.addView(weekNumberHeader)
 
-        val daysOfWeek = arrayOf(R.string.mon.toString(), R.string.tue.toString(), R.string.wed.toString(), R.string.thu.toString(), R.string.fri.toString(), R.string.sat.toString(), R.string.sun.toString())
+        val daysOfWeek = arrayOf(
+            R.string.mon.toChar(),
+            R.string.tue.toChar(),
+            R.string.wed.toChar(),
+            R.string.thu.toChar(),
+            R.string.fri.toChar(),
+            R.string.sat.toChar(),
+            R.string.sun.toChar()
+        )
         for (day in daysOfWeek) {
             val textView = TextView(this).apply {
-                text = day
-                textSize = 16f
+                textSize = 14f
+                text = day.toString()
                 setTextColor(Color.BLACK)
                 gravity = Gravity.CENTER
             }
+
             daysOfWeekRow.addView(textView)
         }
         tableLayout.addView(daysOfWeekRow)
@@ -81,8 +90,8 @@ class CalendarActivity : AppCompatActivity() {
             for (j in 0 until 7) { // 7 столбцов (дни недели)
                 val dayView = TextView(this).apply {
                     text = calendar.get(Calendar.DAY_OF_MONTH).toString()
-                    textSize = 18f
-                    setPadding(20, 20, 20, 20)
+                    textSize = 14f
+                    //setPadding(5, 5, 5, 5)
                     gravity = Gravity.CENTER
                     setTextColor(if (isWeekend(calendar)) Color.BLUE else Color.BLACK)
                     if (isToday(calendar)) {
